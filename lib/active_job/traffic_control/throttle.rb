@@ -43,7 +43,7 @@ module ActiveJob
                 drop("throttling")
               else
                 period = self.class.job_throttling[:period]
-                reenqueue(period...(period * 5), "throttling")
+                reenqueue(period...(period + 1.minute), "throttling")
               end
             end
           else
